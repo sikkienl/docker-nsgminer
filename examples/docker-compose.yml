@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  
+  cpuminer-app:
+    image: tiredofit/miner
+    container_name: cpuminer-app
+    environment:
+      - HOSTNAME=cpuminer-app
+      - ALGORITHM=neoscrypt
+      - HOST=pool.neobytes.network:3010
+      - THREADS=4
+      - USER=NQ6Mi4my7vFVTXvhicVSNF2MSRqPdwYAvH
+      - PASS=x
+    restart: always

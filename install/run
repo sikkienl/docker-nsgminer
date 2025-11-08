@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv bash
+
+ALGORITHM=${ALGORITHM:-"neoscrypt"}
+HOST=${HOST:-"pool.neobytes.network:3010"}
+THREADS=${THREADS:-"2"}
+USER=${USER:-"NQ6Mi4my7vFVTXvhicVSNF2MSRqPdwYAvH"}
+PASS=${PASS:-"x"}
+
+exec /cpuminer-opt/cpuminer -a $ALGORITHM -o stratum+tcp://$HOST -u $USER -p $PASS --threads $THREADS
