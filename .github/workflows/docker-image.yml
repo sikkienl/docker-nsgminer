@@ -8,12 +8,13 @@ env:
   NAME: sikkienl
   VERSION: 0.1.0
   IMAGE_NAME: sikkienl/cpuminer
+
 jobs:
 
   build:
-
-    runs-on: ubuntu-latest
-
+    name: Build Docker Image
+    runs-on: ubuntu:bionic
+    
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
