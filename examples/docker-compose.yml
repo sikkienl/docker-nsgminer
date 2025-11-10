@@ -2,7 +2,7 @@ version: '2'
 
 services:
   
-  cpuminer-app:
+  cpuminer:
     image: sikkienl/cpuminer
     container_name: cpuminer
     environment:
