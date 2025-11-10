@@ -7,7 +7,7 @@ on:
 env:
   NAME: sikkienl
   VERSION: 0.1.0
-  IMAGE_NAME: sikkienl/cpuminer-app
+  IMAGE_NAME: sikkienl/cpuminer
 jobs:
 
   build:
