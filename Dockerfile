@@ -6,14 +6,12 @@ LABEL author="SikkieNL (@sikkienl)"
 RUN apt-get update && \
 	apt-get upgrade -y
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-	bash git wget python3\
+RUN apt-get install -y git \
     build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils \
     libssl-dev \
     libgmp-dev \
     libcurl4-openssl-dev \
-    libjansson-dev \
-    zlib1g-dev && \
+    libjansson-dev &&\
     apt-get clean
 
 ### Build CPU Miner			
