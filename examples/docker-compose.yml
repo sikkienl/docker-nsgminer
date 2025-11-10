@@ -4,9 +4,9 @@ services:
   
   cpuminer-app:
     image: sikkienl/cpuminer
-    container_name: cpuminer-app
+    container_name: cpuminer
     environment:
-      - HOSTNAME=cpuminer-app
+      - HOSTNAME=cpuminer
       - ALGORITHM=neoscrypt
       - HOST=pool.neobytes.network:3010
       - THREADS=4
