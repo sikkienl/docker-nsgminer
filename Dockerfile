@@ -3,23 +3,17 @@ FROM ubuntu:bionic
 LABEL author="SikkieNL (@sikkienl)"
 
 ### Install Dependencies
-RUN apt-get update && \
-	apt-get install -y software-properties-common && \
-  add-apt-repository ppa:bitcoin/bitcoin
+RUN apt-get update -y && \
+	apt-get upgrade -y
 
-RUN apt-get install -y git \
-    build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils \
-    libgmp-dev \
-    libcurl4-openssl-dev \
-    libjansson-dev &&\
-    apt-get clean
+RUN apt-get install -y build-essential automake libssl-dev libcurl4-openssl-dev libjansson-dev libgmp-dev zlib1g-dev git gcc make && \
+  autoconf pkg-config && \
+  rm -rf /var/lib/apt/lists/*
 
 ### Build CPU Miner			
-  run git clone https://github.com/JayDDee/cpuminer-opt && \
-    cd cpuminer-opt && \
-    ./autogen.sh && \
-    CFLAGS="-O3 -march=native -Wall" ./configure --with-curl && \
-    make -j n
+RUN git clone https://github.com/tpruvot/cpuminer-multi -b linux cpuminer && \
+  cd cpuminer && && ./build.sh
 
 ### Entrypoint Setup
-  WORKDIR /cpuminer
+WORKDIR /cpuminer
+ENTRYPOINT	["./cpuminer"]
