@@ -1,5 +1,5 @@
 #FROM alpine:latest
-FROM ubuntu:20.04
+FROM ubuntu: 18.04
 MAINTAINER SikkieNL
 
 ### Set Environment Variables
