@@ -13,7 +13,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     libgmp-dev \
     libcurl4-openssl-dev \
     libjansson-dev \
-    zlib1g-dev \
+    zlib1g-dev && \
     apt-get clean
 
 ### Build CPU Miner			
