@@ -17,11 +17,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     apt-get clean
 
 ### Build CPU Miner			
-  git clone https://github.com/JayDDee/cpuminer-opt && \
+  run git clone https://github.com/JayDDee/cpuminer-opt && \
     cd cpuminer-opt && \
     ./autogen.sh && \
     CFLAGS="-O3 -march=native -Wall" ./configure --with-curl && \
-    make -j n && \
+    make -j n
 
 ### Entrypoint Setup
   WORKDIR /cpuminer
