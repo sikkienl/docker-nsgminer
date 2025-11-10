@@ -14,6 +14,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     libcurl4-openssl-dev \
     libjansson-dev \
     zlib1g-dev \
+    apt-get clean
 
 ### Build CPU Miner			
 #  git clone https://github.com/JayDDee/cpuminer-opt && \
@@ -22,11 +23,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 #	CFLAGS="-O3 -march=native -Wall" ./configure --with-curl && \
 #	make -j n && \
 
-### Cleanup
-
-
-### Add Files
-   ADD install /
-
 ### Entrypoint Setup
-   WORKDIR /cpuminer-opt
+  WORKDIR /cpuminer
