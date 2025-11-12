@@ -14,7 +14,8 @@ RUN apt-get install -y \
   pkg-config \
   libcurl4-gnutls-dev \
 	uthash-dev \
-  libncursesw5-dev
+  libncursesw5-dev \
+  git
 
 ### Build CPU Miner			
 RUN git clone https://github.com/ghostlander/nsgminer && \
