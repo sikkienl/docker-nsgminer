@@ -22,15 +22,17 @@ RUN apt-get install -y \
   libz-dev \
   make \
   pkg-config \
-  && apt-get clean
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 # Build CPU Miner from scource code
-RUN git clone https://github.com/JayDDee/cpuminer-opt && \
-  cd cpuminer-opt && \
-  git checkout "$VERSION_TAG" && \
-  ./autogen.sh && \
-  CFLAGS="-O3 -march=native -Wall" ./configure --with-curl && \
-  make install -j 4
+RUN git clone https://github.com/JayDDee/cpuminer-opt /tmp/cpuminer \
+  && cd /tmp/cpuminer \
+  && git checkout "$VERSION_TAG" \
+  && ./autogen.sh \
+  && extracflags="$extracflags -Ofast -flto -fuse-linker-plugin -ftree-loop-if-convert-stores" \
+  && CFLAGS="-O3 -march=native -Wall" ./configure --with-curl  \
+  && make install -j 4
 
   # Clean-up
 RUN cd / && \
