@@ -1,11 +1,11 @@
 {
-	"__comment_neoscrypt_neobytes" : "-o stratum+tcp://pool.neobytes.network:3010 -u NQ6Mi4my7vFVTXvhicVSNF2MSRqPdwYAvH -p c=LTC,id=docker",
+	"__comment_neoscrypt_neobytes" : "-o stratum+tcp://pool.neobytes.network:3010 -u NQ6Mi4my7vFVTXvhicVSNF2MSRqPdwYAvH -p x",
 
 	"api-bind" : "127.0.0.1:80",
 
 	"url" : "stratum+tcp://pool.neobytes.network:3010",
 	"user" : "NQ6Mi4my7vFVTXvhicVSNF2MSRqPdwYAvH",
-	"pass" : "c=LTC,id=docker",
+	"pass" : "x",
 
 	"algo" : "neoscrypt",
 	"threads" : 4,
