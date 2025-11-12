@@ -1,6 +1,7 @@
 FROM ubuntu:bionic
 
 LABEL author="SikkieNL (@sikkienl)"
+ARG VERSION_TAG=v25.6
 
 # Runtime dependencies
 RUN apt-get update -y && \
@@ -14,18 +15,25 @@ RUN apt-get install -y \
   curl \
   g++ \
   git \
-  libtool \
-  pkg-config \
-  libcurl4-gnutls-dev \
-	uthash-dev \
-  libncursesw5-dev \
-  make
+  libcurl4-openssl-dev \
+  libgmp-dev \
+  libjansson-dev \
+  libssl-dev \
+  libz-dev \
+  make \
+  pkg-config
 
-### Build CPU Miner			
-RUN git clone https://github.com/ghostlander/nsgminer && \
-  cd nsgminer && ./autogen.sh && make
+### Build CPU Miner from scource code
+RUN git config --global http.sslVerify false
+RUN git clone https://github.com/JayDDee/cpuminer-opt && \
+  cd cpuminer-opt && \
+  git checkout "$VERSION_TAG" && \
+  ./autogen.sh && \
+  CFLAGS="-O3 -march=native -Wall" ./configure --with-curl && \
+  make install -j 4
 
 ### Entrypoint Setup
-WORKDIR /nsgminer
-#ENTRYPOINT	["./nsgminer"]
-CMD ["nsgminer"]
+WORKDIR /cpuminer
+COPY config.json /cpuminer
+EXPOSE 80
+CMD ["cpuminer", "--config=config.json"]
