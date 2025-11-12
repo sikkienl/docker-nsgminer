@@ -8,25 +8,18 @@ RUN apt-get update -y && \
 
 RUN apt-get install -y \
   build-essential \
-  automake \
-  libssl-dev \
-  libcurl4-openssl-dev \
-  libjansson-dev \
-  libgmp-dev \
-  zlib1g-dev \
-  git \
-  make \
   autoconf \
-  pkg-config \
+  automake \
   libtool \
+  pkg-config \
   libcurl4-gnutls-dev \
-  uthash-dev \
+	uthash-dev \
   libncursesw5-dev
 
 ### Build CPU Miner			
-RUN git clone https://github.com/tpruvot/cpuminer-multi -b linux cpuminer && \
-  cd cpuminer && ./build.sh
+RUN git clone https://github.com/ghostlander/nsgminer && \
+  cd nsgminer && ./autogen.sh && make
 
 ### Entrypoint Setup
-WORKDIR /cpuminer
-ENTRYPOINT	["./cpuminer"]
+WORKDIR /nsgminer
+ENTRYPOINT	["./nsgminer"]
