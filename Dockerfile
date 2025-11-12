@@ -35,7 +35,7 @@ RUN git clone https://github.com/JayDDee/cpuminer-opt cpuminer \
   && make install -j 4
 
 # Verify
-#UN cpuminer --cputest && \
+#RUN cpuminer --cputest && \
 #cpuminer --version
 
 ### Entrypoint Setup
