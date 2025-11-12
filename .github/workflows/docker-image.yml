@@ -1,4 +1,4 @@
-name: Docker Image NSGminer
+name: Docker Miner Image 
 
 on:
   push:
@@ -8,7 +8,7 @@ env:
   DOCKER_CLI_EXPERIMENTAL: enabled
   NAME: sikkienl
   VERSION: 0.1.0
-  IMAGE_NAME: sikkienl/nsgminer
+  IMAGE_NAME: sikkienl/cpuminer
 
 jobs:
   build:
