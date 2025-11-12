@@ -4,11 +4,22 @@ LABEL author="SikkieNL (@sikkienl)"
 
 ### Install Dependencies
 RUN apt-get update -y && \
-	apt-get upgrade -y
-
-RUN apt-get install -y build-essential automake libssl-dev libcurl4-openssl-dev libjansson-dev libgmp-dev zlib1g-dev git make && \
-  autoconf pkg-config && \
-  libtool libcurl4-gnutls-dev uthash-dev libncursesw5-dev
+	apt-get upgrade -y \
+  build-essential \
+  automake \
+  libssl-dev \
+  libcurl4-openssl-dev \
+  libjansson-dev \
+  libgmp-dev \
+  zlib1g-dev \
+  git \
+  make \
+  autoconf \
+  pkg-config \
+  libtool \
+  libcurl4-gnutls-dev \
+  uthash-dev \
+  libncursesw5-dev
 
 ### Build CPU Miner			
 RUN git clone https://github.com/tpruvot/cpuminer-multi -b linux cpuminer && \
