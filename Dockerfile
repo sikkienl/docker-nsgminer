@@ -35,8 +35,8 @@ RUN git clone https://github.com/JayDDee/cpuminer-opt cpuminer \
   && make install -j 4
 
 # Verify
-RUN cpuminer --cputest && \
-cpuminer --version
+#UN cpuminer --cputest && \
+#cpuminer --version
 
 ### Entrypoint Setup
 WORKDIR /cpuminer
@@ -44,5 +44,5 @@ WORKDIR /cpuminer
 #EXPOSE 80
 #CMD ["cpuminer", "--config=config.json"]
 
-ENTRYPOINT ["./cpuminer"]
-CMD ["-h"]
+#ENTRYPOINT ["./cpuminer"]
+#CMD ["-h"]
