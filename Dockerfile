@@ -26,8 +26,8 @@ RUN apt-get install -y \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 # Build CPU Miner from scource code
-RUN git clone https://github.com/JayDDee/cpuminer-opt cpuminer \
-  && cd cpuminer \
+RUN git clone https://github.com/JayDDee/cpuminer-opt \
+  && cd cpuminer-opt \
   && git checkout "$VERSION_TAG" \
   && ./autogen.sh \
   && extracflags="$extracflags -Ofast -flto -fuse-linker-plugin -ftree-loop-if-convert-stores" \
