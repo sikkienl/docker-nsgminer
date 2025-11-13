@@ -26,7 +26,7 @@ RUN apt-get install -y \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 # Download CPUMiner from scource
-RUN git clone https://github.com/JayDDee/cpuminer-opt cpuminer
+RUN git clone https://github.com/JayDDee/cpuminer-opt /cpuminer
 
 # Build cpuminer
 RUN cd cpuminer \
