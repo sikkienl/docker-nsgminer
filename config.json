@@ -1,5 +1,5 @@
 {
-	"__comment_neoscrypt_neobytes" : "-o stratum+tcp://pool.neobytes.network:3010 -u NQ6Mi4my7vFVTXvhicVSNF2MSRqPdwYAvH -p x",
+//	"__comment_neoscrypt_neobytes" : "-o stratum+tcp://pool.neobytes.network:3010 -u NQ6Mi4my7vFVTXvhicVSNF2MSRqPdwYAvH -p x",
 
 	"api-bind" : "127.0.0.1:80",
 
