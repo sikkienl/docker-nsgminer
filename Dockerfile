@@ -26,21 +26,35 @@ RUN apt-get install -y \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 # Download CPUMiner from scource
-RUN git clone https://github.com/JayDDee/cpuminer-opt
+RUN git clone https://github.com/JayDDee/cpuminer-opt cpuminer
 
 # Build cpuminer
-RUN cd cpuminer-opt \
+RUN cd cpuminer \
   && git checkout "$VERSION_TAG" \
   && ./autogen.sh \
   && extracflags="$extracflags -Ofast -flto -fuse-linker-plugin -ftree-loop-if-convert-stores" \
   && CFLAGS="-O3 -march=native -Wall" ./configure --with-curl  \
   && make install -j 4
 
-# Entrypoint Setup
-WORKDIR /cpuminer-opt
-#COPY config.json /cpuminer
-#EXPOSE 80
-#CMD ["cpuminer", "--config=config.json"]
+ # Clean-up
+ RUN apt-get remove -y \
+  autoconf \
+  automake \
+  build-essential \
+  curl \
+  g++ \
+  git \
+  make \
+  pkg-config \
+  && apt-get autoremove -y \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
-ENTRYPOINT ["./cpuminer"]
-CMD ["-h"]
+# Entrypoint Setup
+WORKDIR /cpuminer
+COPY config.json /cpuminer
+EXPOSE 80
+CMD ["cpuminer", "--config=config.json"]
+
+#ENTRYPOINT ["./cpuminer"]
+#CMD ["-h"]
