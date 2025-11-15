@@ -25,8 +25,7 @@ RUN set -x \
 # Build cpuminer
 WORKDIR /buildbase/cpuminer
 ARG VERSION_TAG=v25.6
-RUN set -x \
-  && git checkout "$VERSION_TAG" \
+RUN git checkout "$VERSION_TAG" \
   && ./autogen.sh \
   && extracflags="$extracflags -Ofast -flto -fuse-linker-plugin -ftree-loop-if-convert-stores" \
   && CFLAGS="-O3 -march=native -Wall" ./configure --with-curl  \
