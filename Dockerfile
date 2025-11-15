@@ -18,15 +18,16 @@ RUN set -x \
   && rm -rf /var/lib/apt/lists/*
 
 # Download CPUMiner from scource
+ARG VERSION_TAG=v25.6
 WORKDIR /buildbase
+
 RUN set -x \
-  && git clone https://github.com/JayDDee/cpuminer-opt /cpuminer
+  && git clone https://github.com/JayDDee/cpuminer-opt /cpuminer \
+  && git checkout "$VERSION_TAG"
 
 # Build cpuminer
 WORKDIR /buildbase/cpuminer
-ARG VERSION_TAG=v25.6
-RUN git checkout "$VERSION_TAG" \
-  && ./autogen.sh \
+RUN ./autogen.sh \
   && extracflags="$extracflags -Ofast -flto -fuse-linker-plugin -ftree-loop-if-convert-stores" \
   && CFLAGS="-O3 -march=native -Wall" ./configure --with-curl  \
   && make install -j 4
