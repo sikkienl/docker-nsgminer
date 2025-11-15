@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:22.04 as builder
 LABEL author="SikkieNL (@sikkienl)"
 ARG VERSION_TAG=v25.6
 
@@ -31,9 +31,12 @@ RUN cd cpuminer \
   && cpuminer --cputest \
   && cpuminer --version
 
-WORKDIR /cpuminer
-#ADD config.json /cpuminer
-#EXPOSE 4048
-#CMD ["cpuminer", "--config=config.json"]
+# App
+FROM ubuntu:22.04
+RUN apt-get update \
+  && apt-get install -y libcurl4 openssl libgmp10 libjansson4 zlib1g \
+  && rm -rf /var/lib/apt/lists/*
+
+COPY --from=builder /cpuminer .
 ENTRYPOINT	["./cpuminer"]
 CMD ["-h"]
