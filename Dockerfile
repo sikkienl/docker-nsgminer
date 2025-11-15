@@ -1,29 +1,20 @@
-FROM ubuntu:bionic
-
+FROM ubuntu:22.04
 LABEL author="SikkieNL (@sikkienl)"
 ARG VERSION_TAG=v25.6
 
-# Runtime dependencies
-RUN apt-get update -y && \
-	apt-get upgrade -y
-
 # Install Dependencies
-RUN apt-get install -y \
-  autoconf \
-  automake \
-  build-essential \
-  curl \
-  g++ \
-  git \
-  libcurl4-openssl-dev \
-  libgmp-dev \
-  libjansson-dev \
-  libssl-dev \
-  libz-dev \
-  make \
-  pkg-config \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
+RUN apt-get update -y && \
+    apt-get install -y \
+    autoconf \
+    automake \
+    build-essential \
+    git \
+    libcurl4-openssl-dev \
+    libgmp-dev \
+    libjansson-dev \
+    libssl-dev \
+    zlib1g-dev \
+  && rm -rf /var/lib/apt/lists/*
 
 # Download CPUMiner from scource
 RUN git clone https://github.com/JayDDee/cpuminer-opt /cpuminer
