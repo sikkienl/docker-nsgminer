@@ -30,10 +30,11 @@ RUN set -x \
   && ./autogen.sh \
   && extracflags="$extracflags -Ofast -flto -fuse-linker-plugin -ftree-loop-if-convert-stores" \
   && CFLAGS="-O3 -march=native -Wall" ./configure --with-curl  \
-  && make install -j 4 \
+  && make install -j 4
 
 # App
 FROM ubuntu:22.04 as RELEASE
+
 RUN set -x \
   && apt-get update \
   && apt-get install -y \
