@@ -56,8 +56,8 @@ LABEL \
 ENV ALGOLITHM=""
 ENV THREADS=1
 ENV USER=""
-ENV PWD=""
+ENV PASSWORD=""
 ENV URL=""
 
-ENTRYPOINT /cpuminer/cpuminer --algo=${ALGOLITHM} --url=${URL} --user=${USER} --threads=${THREADS} --pass=${PWD} 
+ENTRYPOINT /cpuminer/cpuminer --algo=${ALGOLITHM} --url=${URL} --user=${USER} --threads=${THREADS} --pass=${PASSWORD}
 
