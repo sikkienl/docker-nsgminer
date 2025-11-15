@@ -46,7 +46,7 @@ RUN set -x \
     libjansson4 \
     zlib1g
 
-#WORKDIR /cpuminer
+WORKDIR /cpuminer
 
 #COPY --from=builder /buildbase/cpuminer-opt/cpuminer ./cpuminer
 COPY --from=builder /buildbase/cpuminer-opt .
@@ -65,5 +65,9 @@ LABEL \
 #ENTRYPOINT /cpuminer/cpuminer -a ${ALGOLITHM} -o ${POOL} -u ${USER} -p ${PASS} -t ${NB_THREADS}
 #ENTRYPOINT /cpuminer -a ${ALGOLITHM} -o ${POOL} -u ${USER} -p ${PASS} -t ${NB_THREADS}
 
-ENTRYPOINT ["./cpuminer"]
-CMD ["-h"]
+#ENTRYPOINT ["./cpuminer"]
+#CMD ["-h"]
+
+COPY config.json .
+EXPOSE 4048
+CMD ["cpuminer", "--config=config.json"]
