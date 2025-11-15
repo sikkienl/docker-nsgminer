@@ -53,10 +53,10 @@ LABEL \
   author="SikkieNL (@sikkienl)" \
   type="cpuminer"
 
-ENV ALGOLITHM=""
+ENV ALGO=""
 ENV THREADS=1
 ENV USER=""
-ENV PASSWORD=""
+ENV PWD=""
 ENV URL=""
 
-ENTRYPOINT /cpuminer/cpuminer --algo=${ALGOLITHM} --url=${URL} --user=${USER} --threads=${THREADS} --pass=${PASSWORD}
+ENTRYPOINT /cpuminer/cpuminer -a=${ALGO} -0=${URL} -u=${USER} -t=${THREADS} -p=${PWD}
