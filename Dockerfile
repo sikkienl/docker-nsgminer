@@ -61,5 +61,5 @@ ENV USER=""
 ENV PASS=""
 ENV NB_THREADS=1
 
-ENTRYPOINT /cpuminer --algo=${ALGOLITHM} --url=${POOL} --user=${USER} --threads=${NB_THREADS} --pass=${PASS}
-
+#ENTRYPOINT /cpuminer --algo=${ALGOLITHM} --url=${POOL} --user=${USER} --threads=${NB_THREADS} --pass=${PASS}
+ENTRYPOINT /cpuminer -a ${ALGOLITHM} -o ${POOL} -u ${USER} -p ${PASS} -t ${NB_THREADS}
