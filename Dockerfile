@@ -32,6 +32,7 @@ RUN cd cpuminer \
   && cpuminer --version
 
 WORKDIR /cpuminer
-ADD config.json /cpuminer
-EXPOSE 4048
-CMD ["cpuminer", "--config=config.json"]
+#ADD config.json /cpuminer
+#EXPOSE 4048
+#CMD ["cpuminer", "--config=config.json"]
+ENTRYPOINT	["./cpuminer"]
