@@ -2,15 +2,13 @@ version: '2'
 
 services:
   
-  cpuminer:
+  crypto-miner:
     image: sikkienl/cpuminer
-    container_name: cpuminer
+    container_name: crypto-miner
     environment:
-      - HOSTNAME=cpuminer
-
-      - ALGORITHM=neoscrypt
-      - HOST=pool.neobytes.network:3010
-      - THREADS=4
+      - ALGO=neoscrypt
+      - URL=stratum+tcp://pool.neobytes.network:3010
       - USER=NQ6Mi4my7vFVTXvhicVSNF2MSRqPdwYAvH.worker1
       - PASS=x
+      - THREADS=2
     restart: always
