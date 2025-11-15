@@ -22,10 +22,10 @@ RUN set -x \
 
 WORKDIR /buildbase
 RUN set -x \
-  && git clone https://github.com/JayDDee/cpuminer-opt -b v25.6 /cpuminer
+  && git clone https://github.com/JayDDee/cpuminer-opt -b v25.6
 
 # Build cpuminer
-WORKDIR /buildbase/cpuminer
+WORKDIR /buildbase/cpuminer-opt
 RUN set -x \
 # RUN ./autogen.sh \
   && bash -x ./autogen.sh \
@@ -47,7 +47,7 @@ RUN set -x \
 
 WORKDIR /cpuminer
 
-COPY --from=builder /buildbase/cpuminer/cpuminer ./cpuminer
+COPY --from=builder /buildbase/cpuminer-opt/cpuminer ./cpuminer
 
 LABEL \
   author="SikkieNL (@sikkienl)" \
