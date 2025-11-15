@@ -1,14 +1,12 @@
 {
-	"__comment_neoscrypt_neobytes" : "-o stratum+tcp://pool.neobytes.network:3010 -u NQ6Mi4my7vFVTXvhicVSNF2MSRqPdwYAvH -p x",
-
-	"api-bind" : "127.0.0.1:80",
-
 	"url" : "stratum+tcp://pool.neobytes.network:3010",
-	"user" : "NQ6Mi4my7vFVTXvhicVSNF2MSRqPdwYAvH",
+	"user" : "NQ6Mi4my7vFVTXvhicVSNF2MSRqPdwYAvH.worker1",
 	"pass" : "x",
-
 	"algo" : "neoscrypt",
-	"threads" : 4,
 
-	"no-color" : true
+	"threads" : 4,
+	"cpu-affinity" : "-1",
+	"api-bind" : "127.0.0.1:4048",
+	"benchmark" : false,
+	"quiet" : false
 }
