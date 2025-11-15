@@ -55,13 +55,11 @@ LABEL \
   author="SikkieNL (@sikkienl)" \
   type="cpuminer"
 
-#ENV ALGOLITHM=""
-#ENV THREADS=1
-#ENV USER=""
-#ENV PASSWORD=""
-#ENV URL=""
+ENV ALGOLITHM=neoscrypt
+ENV POOL=stratum+tcp://pool.neobytes.network:3010
+ENV USER=NQ6Mi4my7vFVTXvhicVSNF2MSRqPdwYAvH.worker1
+ENV PASS=x
+ENV NB_THREADS=3
 
-#ENTRYPOINT /cpuminer/cpuminer --algo=${ALGOLITHM} --url=${URL} --user=${USER} --threads=${THREADS} --pass=${PASSWORD}
+ENTRYPOINT /cpuminer/cpuminer --algo=${ALGOLITHM} --url=${POOL} --user=${USER} --threads=${THREADS} --pass=${PASS}
 
-ENTRYPOINT ["./cpuminer"]
-CMD ["-h"]
