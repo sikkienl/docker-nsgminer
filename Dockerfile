@@ -34,7 +34,7 @@ RUN set -x \
   && make install -j 4
 
 # App
-FROM ubuntu:22.04 as release
+FROM ubuntu:22.04
 
 RUN set -x \
   && apt-get update \
@@ -46,9 +46,10 @@ RUN set -x \
     libjansson4 \
     zlib1g
 
-WORKDIR /cpuminer
+# WORKDIR /cpuminer
 
-COPY --from=builder /buildbase/cpuminer-opt/cpuminer ./cpuminer
+#COPY --from=builder /buildbase/cpuminer-opt/cpuminer ./cpuminer
+COPY --from=builder /buildbase/cpuminer-opt .
 
 LABEL \
   author="SikkieNL (@sikkienl)" \
@@ -62,5 +63,5 @@ LABEL \
 
 #ENTRYPOINT /cpuminer/cpuminer --algo=${ALGOLITHM} --url=${URL} --user=${USER} --threads=${THREADS} --pass=${PASSWORD}
 
-ENTRYPOINT ["./cpuminer/cpuminer"]
+ENTRYPOINT ["./cpuminer"]
 CMD ["-h"]
