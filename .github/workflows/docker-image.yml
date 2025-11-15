@@ -7,7 +7,6 @@ on:
 env:
   DOCKER_CLI_EXPERIMENTAL: enabled
   NAME: sikkienl
-  VERSION: 0.1.0
   IMAGE_NAME: sikkienl/cpuminer
 
 jobs:
@@ -33,10 +32,3 @@ jobs:
           docker buildx build \
           --tag ${{ env.IMAGE_NAME }}:latest \
           --output "type=registry" .
-
-      - name: Run Docker build ${{ env.NAME }}:${{ env.VERSION }}
-        run: |
-          docker buildx build \
-          --tag ${{ env.IMAGE_NAME }}:${{ env.VERSION }} \
-          --output "type=registry" .
-
