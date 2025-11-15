@@ -33,18 +33,20 @@ RUN set -x \
   && make install -j 4 \
 
 # App
-FROM ubuntu:22.04
-RUN apt-get update \
+FROM ubuntu:22.04 as RELEASE
+RUN set -x \
+  && apt-get update \
   && apt-get install -y \
-  libcurl4 \
-  openssl \
-  libgmp10 \
-  libjansson4 \
-  zlib1g \
-  && rm -rf /var/lib/apt/lists/*
+    libcurl4 \
+    openssl \
+    libgmp10 \
+    libjansson4 \
+    zlib1g
 
 WORKDIR /cpuminer
+
 COPY --from=BUILD /buildbase/cpuminer/cpuminer ./cpuminer
+
 LABEL \
   author="SikkieNL (@sikkienl)" \
   type="cpuminer"
