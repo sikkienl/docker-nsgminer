@@ -19,10 +19,11 @@ RUN set -x \
 
 WORKDIR /buildbase
 RUN set -x \
-    && git clone https://github.com/JayDDee/cpuminer-opt -b v25.6
+    #&& git clone https://github.com/JayDDee/cpuminer-opt -b v25.6
+    && git clone https://github.com/tpruvot/cpuminer-multi.git cpuminer
 
 # Build cpuminer
-WORKDIR /buildbase/cpuminer-opt
+WORKDIR /buildbase/cpuminer
 RUN set -x \
     && bash -x ./autogen.sh \
     #&& extracflags="$extracflags -Ofast -flto -fuse-linker-plugin -ftree-loop-if-convert-stores" \
@@ -44,7 +45,7 @@ RUN set -x \
 WORKDIR /cpuminer
 
 #COPY --from=builder /buildbase/cpuminer-opt/cpuminer ./cpuminer
-COPY --from=builder /buildbase/cpuminer-opt .
+COPY --from=builder /buildbase/cpuminer .
 
 LABEL \
   author="SikkieNL (@sikkienl)" \
