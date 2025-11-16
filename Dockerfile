@@ -27,7 +27,7 @@ RUN set -x \
     && bash -x ./autogen.sh \
     && extracflags="$extracflags -Ofast -flto -fuse-linker-plugin -ftree-loop-if-convert-stores" \
     && CFLAGS="-O3 -march=native -Wall" ./configure --with-curl  \
-    && make install -j 4
+    && make
 
 # App
 FROM alpine:3.17.0
