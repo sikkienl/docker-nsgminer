@@ -4,7 +4,7 @@ FROM ubuntu:bionic as builder
 # Update OS
 RUN set -x \
   && apt-get update \
-  && apt-get upgrade
+  && apt-get upgrade -y
 
 # Install Dependencies
 RUN set -x \
