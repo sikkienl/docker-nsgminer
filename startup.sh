@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILE="/workdir/cpuminer"
+FILE="/cpuminer"
 
 if [ -f "$FILE" ]; then
     echo "CPU miner found. Executing it with arguments: $*"
