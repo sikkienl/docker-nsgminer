@@ -46,7 +46,6 @@ RUN set -x \
     libjansson4 \
     zlib1g
 
-VOLUME /cpuminer
 WORKDIR /cpuminer
 
 #COPY --from=builder /buildbase/cpuminer-opt/cpuminer ./cpuminer
@@ -70,4 +69,4 @@ LABEL \
 #CMD ["-h"]
 
 COPY startup.sh .
-ENTRYPOINT [ "bash", "/startup.sh" ]
+ENTRYPOINT [ "bash", "startup.sh" ]
